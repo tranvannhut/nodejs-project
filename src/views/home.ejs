@@ -1,0 +1,95 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+      }
+
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+        position: fixed;
+        top: 0;
+        width: 100%;
+      }
+
+      li {
+        float: left;
+      }
+
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+
+      li a:hover:not(.active) {
+        background-color: #111;
+      }
+
+      .active {
+        background-color: #04aa6d;
+      }
+      #customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+    </style>
+  </head>
+    <ul>
+      <li><a class="active" href="/">Home</a></li>
+      <li><a href="/createUser">Create user</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div style="padding:20px;margin-top:30px;height:10px;"></div>
+    <table id="customers">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Country/City</th>
+        <th></th>
+      </tr>
+        <% listUser.forEach(function(user,index) { %>
+            <tr>
+                <td><%= user.ID %></td>
+                <td><%= user.NAME %></td>
+                <td><%= user.EMAIL %></td>
+                <td><%= user.CITY %></td>
+                <td>
+                    <a href="/editUser?id=<%= user.ID %>">Edit</a>
+                    <a href="/deleteUser?id=<%= user.ID %>">Delete</a>
+                </td>
+            </tr>   
+        <% }); %> 
+
+    </div>
+    </table>
+  </body>
+</html>
